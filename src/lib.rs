@@ -13,16 +13,17 @@ const ROMAN_NUMERALS_CONVERSION_TABLE: [(i32, &str); 13] = [
     (4, "IV"),
     (1, "I"),
 ];
+
 pub fn convert(mut num: i32) -> String {
     let mut result = String::new();
-
     for &(value, symbol) in ROMAN_NUMERALS_CONVERSION_TABLE.iter() {
         while num >= value {
             result.push_str(symbol);
             num -= value
         }
     }
-    return result;
+
+    result
 }
 
 #[cfg(test)]
