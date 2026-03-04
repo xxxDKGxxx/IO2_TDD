@@ -154,4 +154,19 @@ mod tests {
             );
         }
     }
+
+    #[test]
+    fn negative_input_tests() {
+        let test_data = vec![-44, -99, -494, -949, -1994, -3999];
+
+        for test_input in test_data.iter() {
+            let result = convert(*test_input);
+            assert!(
+                result.is_empty(),
+                "Expected an empty string for arab number {:?}, got {:?}",
+                test_input,
+                result
+            );
+        }
+    }
 }
