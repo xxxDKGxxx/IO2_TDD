@@ -101,4 +101,28 @@ mod tests {
             );
         }
     }
+
+    #[test]
+    fn basic_substraction_symbols_tests() {
+        let test_data = vec![4, 9, 40, 90, 400, 900];
+        let expected_results: Vec<String> = vec![
+            "IV".into(),
+            "IX".into(),
+            "XL".into(),
+            "XC".into(),
+            "CD".into(),
+            "CM".into(),
+        ];
+
+        for (test_input, expected_result) in test_data.iter().zip(expected_results) {
+            let result = convert(*test_input);
+            assert!(
+                result == expected_result,
+                "Expected {:?} for arab number {:?}, got {:?}",
+                expected_result,
+                test_input,
+                result
+            );
+        }
+    }
 }
