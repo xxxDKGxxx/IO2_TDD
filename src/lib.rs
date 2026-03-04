@@ -1,5 +1,21 @@
-pub fn convert(num: i32) -> String {
-    return String::from("");
+const ROMAN_NUMERALS_CONVERSION_TABLE: [(i32, &str); 7] = [
+    (1000, "M"),
+    (500, "D"),
+    (100, "C"),
+    (50, "L"),
+    (10, "X"),
+    (5, "V"),
+    (1, "I"),
+];
+pub fn convert(mut num: i32) -> String {
+    let mut result = String::new();
+
+    for &(value, symbol) in ROMAN_NUMERALS_CONVERSION_TABLE.iter() {
+        if num == value {
+            return String::from(symbol);
+        }
+    }
+    return String::new();
 }
 
 #[cfg(test)]
