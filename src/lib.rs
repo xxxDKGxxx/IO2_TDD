@@ -74,4 +74,31 @@ mod tests {
             );
         }
     }
+
+    #[test]
+    fn advanced_addition_symbols_tests() {
+        let test_data = vec![3, 8, 27, 68, 126, 273, 666, 1723, 2533];
+        let expected_results: Vec<String> = vec![
+            "III".into(),
+            "VIII".into(),
+            "XXVII".into(),
+            "LXVIII".into(),
+            "CXXVI".into(),
+            "CCLXXIII".into(),
+            "DCLXVI".into(),
+            "MDCCXXIII".into(),
+            "MMDXXXIII".into(),
+        ];
+
+        for (test_input, expected_result) in test_data.iter().zip(expected_results) {
+            let result = convert(*test_input);
+            assert!(
+                result == expected_result,
+                "Expected {:?} for arab number {:?}, got {:?}",
+                expected_result,
+                test_input,
+                result
+            );
+        }
+    }
 }
