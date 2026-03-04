@@ -11,11 +11,12 @@ pub fn convert(mut num: i32) -> String {
     let mut result = String::new();
 
     for &(value, symbol) in ROMAN_NUMERALS_CONVERSION_TABLE.iter() {
-        if num == value {
-            return String::from(symbol);
+        while num >= value {
+            result.push_str(symbol);
+            num -= value
         }
     }
-    return String::new();
+    return result;
 }
 
 #[cfg(test)]
@@ -33,6 +34,33 @@ mod tests {
             "C".into(),
             "D".into(),
             "M".into(),
+        ];
+
+        for (test_input, expected_result) in test_data.iter().zip(expected_results) {
+            let result = convert(*test_input);
+            assert!(
+                result == expected_result,
+                "Expected {:?} for arab number {:?}, got {:?}",
+                expected_result,
+                test_input,
+                result
+            );
+        }
+    }
+
+    #[test]
+    fn basic_addition_symbols_tests() {
+        let test_data = vec![2, 6, 20, 60, 110, 150, 600, 1500, 2000];
+        let expected_results: Vec<String> = vec![
+            "II".into(),
+            "VI".into(),
+            "XX".into(),
+            "LX".into(),
+            "CX".into(),
+            "CL".into(),
+            "DC".into(),
+            "MD".into(),
+            "MM".into(),
         ];
 
         for (test_input, expected_result) in test_data.iter().zip(expected_results) {
