@@ -14,12 +14,13 @@ const ROMAN_NUMERALS_CONVERSION_TABLE: [(i32, &str); 13] = [
     (1, "I"),
 ];
 
+#[must_use]
 pub fn convert(mut num: i32) -> String {
     let mut result = String::new();
-    for &(value, symbol) in ROMAN_NUMERALS_CONVERSION_TABLE.iter() {
+    for &(value, symbol) in &ROMAN_NUMERALS_CONVERSION_TABLE {
         while num >= value {
             result.push_str(symbol);
-            num -= value
+            num -= value;
         }
     }
 
