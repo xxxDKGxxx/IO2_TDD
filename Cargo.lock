@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "TDD_IO2_Rust"
+name = "tdd_io2_rust"
 version = "0.1.0"
