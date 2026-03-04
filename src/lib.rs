@@ -131,4 +131,27 @@ mod tests {
             );
         }
     }
+    #[test]
+    fn advanced_substraction_symbols_tests() {
+        let test_data = vec![44, 99, 494, 949, 1994, 3999];
+        let expected_results: Vec<String> = vec![
+            "XLIV".into(),
+            "XCIX".into(),
+            "CDXCIV".into(),
+            "CMXLIX".into(),
+            "MCMXCIV".into(),
+            "MMMCMXCIX".into(),
+        ];
+
+        for (test_input, expected_result) in test_data.iter().zip(expected_results) {
+            let result = convert(*test_input);
+            assert!(
+                result == expected_result,
+                "Expected {:?} for arab number {:?}, got {:?}",
+                expected_result,
+                test_input,
+                result
+            );
+        }
+    }
 }
